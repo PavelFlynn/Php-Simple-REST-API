@@ -1,0 +1,15 @@
+RewriteEngine On
+
+Options -MultiViews
+
+# Rewrite .php files
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}.php -f
+RewriteRule ^(.*)$ $1.php
+
+RewriteCond %{THE_REQUEST} "^[^ ]* .*?\.php[? ].*$"
+RewriteRule .* - [L,R=404]
+
+IndexIgnore *
+Options -Indexes
+
